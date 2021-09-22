@@ -1,0 +1,25 @@
+{
+  "name": "insurance-recommendation",
+  "version": "1.0.0",
+  "description": "insurance recommendation engine",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon src/index.js",
+    "test": "ava test/*/*.test.js test/*.test.js -v",
+    "start": "node src/index.js"
+  },
+  "author": "shoya moosavi",
+  "license": "ISC",
+  "dependencies": {
+    "celebrate": "^15.0.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "nodemon": "^2.0.12",
+    "sinon": "^11.1.2",
+    "supertest": "^6.1.6"
+  }
+}
