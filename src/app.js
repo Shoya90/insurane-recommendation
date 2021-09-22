@@ -1,13 +1,10 @@
 const express = require('express')
 const http = require('http')
 const { errors} = require('celebrate')
-const swaggerUi = require('swagger-ui-express')
-const swaggerJsDoc = require('swagger-jsdoc')
 
 const userRouter = require('./routes/user.route')
 const authRouter = require('./routes/auth.route')
 const authMiddleware = require('./middleware/auth')
-const openApiSConfig = require('./api-docs/config')
 
 const app = express()
 const server = http.createServer(app)
@@ -15,7 +12,7 @@ const server = http.createServer(app)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(openApiSConfig)))
+app.get('/-/ping', (req, res) => res.sendStatus(200).end())
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/user', authMiddleware.checkJwt, userRouter)

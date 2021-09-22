@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "94d24569-768c-47b8-a4cf-214881acff68",
+		"name": "insurance-recom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"some@email\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get access token from magic link",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/magic_link_login?token=dd3e092b98f8a6a14a65fb4825eb117a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"magic_link_login"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "dd3e092b98f8a6a14a65fb4825eb117a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put user questionnaire",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjAsImV4cCI6MTYzMjM0NDQ4OCwiaWF0IjoxNjMyMzQwODg4fQ.45A1yLHX_r7s_IwNuyaj-zseM7tl3Vnu5n7iWJwLRBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name\",\n    \"address\": \"abc str. 123\",\n    \"hasChild\": true,\n    \"childCount\": 2,\n    \"occupationStatus\": \"EMPLOYED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/user/questionnaire",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"questionnaire"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user recommendations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjAsImV4cCI6MTYzMjM0NDQ4OCwiaWF0IjoxNjMyMzQwODg4fQ.45A1yLHX_r7s_IwNuyaj-zseM7tl3Vnu5n7iWJwLRBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/user/recommendations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"recommendations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
