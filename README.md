@@ -1,2 +1,2 @@
-# insurane-recommendation
+# insurance-recommendation
 Coding challenge
