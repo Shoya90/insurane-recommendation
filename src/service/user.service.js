@@ -1,5 +1,5 @@
 let db = {}
-let id = 0
+let id = 1
 
 function store(user) {
     db[id] = {

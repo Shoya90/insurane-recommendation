@@ -6,18 +6,20 @@ function checkJwt(req, res, next) {
   if(authHeader) {
     const token = authHeader.split(' ')[1]
     try {
-      const decoded = jwt.decode(token, config.SECRET)
+      const decoded = jwt.verify(token, config.SECRET)
       req.userId = decoded.sub
       next()
     } catch (error) {
       res.status(403)
-      res.send({ error: 'access denied' })
+      res.send({ error: 'Access denied' })
     }
   } else {
-    res.sendStatus(401)
+    res.status(401)
+    res.send({ error: 'Unauthorized' })
   }
 }
 
 module.exports = {
   checkJwt
 }
+ 

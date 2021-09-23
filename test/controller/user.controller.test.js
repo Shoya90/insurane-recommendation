@@ -69,6 +69,15 @@ test.serial('updateUserQuestionaire updates and returns user', t => {
     t.deepEqual(updatedUser, user)
 })
 
+test.serial('getUserRecommendations returns undefined if user not found', t => {
+    const getUserByIdStub = sinon.stub(userService, 'getUserById').returns(undefined)
+    const recommendations = userController.getUserRecommendations(0)
+
+    t.is(getUserByIdStub.callCount, 1)
+    t.is(getUserByIdStub.firstCall.args[0], 0)
+
+    t.is(recommendations, undefined)
+})
 
 test.serial('getUserRecommendations returns recommendations based on user questionnaire', t => {
     const user = {

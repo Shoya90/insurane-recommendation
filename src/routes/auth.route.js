@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 
 const userController = require('../controller/user.controller')
 const config =  require('../config')
-const { NotExtended } = require('http-errors')
 
 const router = new Router()
 

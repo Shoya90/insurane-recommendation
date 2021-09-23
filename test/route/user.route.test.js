@@ -48,6 +48,18 @@ test.serial('GET /user/recommendations gets user recommendation and return an ar
     t.deepEqual(res.body, recommendations)
 })
 
+test.serial('GET /user/recommendations returns 404 if user not found', async t => {
+    const getUserRecommendationsStub = sinon.stub(userController, 'getUserRecommendations').returns(undefined)
+
+    const res = await request(app).get('/api/v1/user/recommendations')
+
+    t.is(getUserRecommendationsStub.callCount, 1)
+    t.is(getUserRecommendationsStub.firstCall.firstArg, 'user-id')
+
+    t.is(res.status, 404)
+    t.is(res.body.message, 'User not found')
+})
+
 test.serial('PUT /user/questionnaire fails if validation fails', async t => {
     const updateUserQuestionaireStub = sinon.stub(userController, 'updateUserQuestionaire')
 

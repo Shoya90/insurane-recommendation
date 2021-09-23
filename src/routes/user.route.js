@@ -22,6 +22,10 @@ router.put('/questionnaire', celebrate({
 router.get('/recommendations', (req, res, next) => {
     const recommendations =  userController.getUserRecommendations(req.userId)
 
+    if(!recommendations) {
+        return next(createError(404, 'User not found'))
+    }
+
     res.send(recommendations)
 })
 

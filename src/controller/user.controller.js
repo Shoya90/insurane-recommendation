@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const userService = require('../service/user.service')
+const createError = require('http-errors')
 
 const RECOMMENDATIONS = {
     'personal liability' : {
@@ -58,6 +59,8 @@ function updateUserQuestionaire(id, questionnaire) {
 
 function getUserRecommendations(id) {
     const user = userService.getUserById(id)
+
+    if(!user) return
 
     let recommendations = []
 
